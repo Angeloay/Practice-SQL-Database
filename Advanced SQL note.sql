@@ -183,11 +183,7 @@ FROM works_with
 GROUP BY client_id;
 
 
-
 --find any clients in LLC 
---LIKE is special key word
--- % = any # of characters, any numbers or letter can come before that. but it has to be LLC
--- _ underscore = 1 character  
 SELECT *
 FROM client
 WHERE client_name LIKE '%LLC%' ;
@@ -198,7 +194,6 @@ FROM branch_supplier
 WHERE supplier_name LIKE '%label%';
 
 --find any employee born in FEB
--- the underscore is the number of spaces before you hit the number you want
 SELECT *
 FROM employee
 WHERE birth_day LIKE '____-02%';
@@ -217,7 +212,6 @@ UNION
 SELECT supplier_name, branch_supplier.branch_id
 FROM branch_supplier;
 
--- ** JOINS
 -- Find all branches and the name of their managers
 INSERT INTO branch VALUES(4, 'Buffalo', NULL, NULL);
 
@@ -254,25 +248,3 @@ WHERE client.branch_id = (
 	FROM branch
 	WHERE branch.mgr_id = 102
 );
-
--- Deleting entry with foreign key / handling foreing key
--- on delete cascade = delete the entire row if the foreign key gets deleted
--- delete on NULL just change the value to null
-
-
-
--- Triggers (use in command prompt 
-
--- CREATE TABLE trigger_test (
--- message VARCHAR(100)
---);
-
--- DELIMITTER $$
--- CREATE
--- TRIGGER my_trigger BEFORE INSERT
--- ON employee
--- FOR EACH ROW BEGIN
--- INSERT INTO trigger_test values ('added new employee');
--- END $$
--- DELIMITER; 
-
