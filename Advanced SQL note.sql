@@ -52,43 +52,43 @@ FOREIGN KEY (branch_id) REFERENCES branch (branch_id) ON DELETE CASCADE
 );
 
 --Corporate Branch
-INSERT INTO employee VALUES (100, 'David', 'Wallace', '1967-11-17', 'M', 250000, NULL, NULL);
+INSERT INTO employee VALUES (100, 'Bill', 'Tusk', '1960-11-17', 'M', 250000, NULL, NULL);
 
-INSERT INTO branch VALUES(1, 'Corporate', 100, '2006-02-09');
+INSERT INTO branch VALUES(1, 'Corporate', 100, '2004-02-09');
 
 UPDATE employee
 SET branch_id = 1
 WHERE emp_id = 100;
 
-INSERT INTO employee VALUES (101, 'Jan', 'Levinson', '1961-05-11', 'F', 110000, 100, 1);
+INSERT INTO employee VALUES (101, 'Jenny', 'Connor', '1955-05-11', 'F', 110000, 100, 1);
 
--- Scranton
+-- Detroit
 
-INSERT INTO employee VALUES (102, 'Michael', 'Scott', '1961-05-11', 'F', 110000, 100, 1);
+INSERT INTO employee VALUES (102, 'David', 'Staples', '1941-12-11', 'M', 110000, 100, 1);
 
-INSERT INTO branch VALUES(2, 'Scranton', 102, '1992-04-06');
+INSERT INTO branch VALUES(2, 'Detroit', 102, '1990-04-06');
 
 UPDATE employee
 SET branch_id = 2
 WHERE emp_id = 102; 
 
-INSERT INTO employee VALUES(103, 'Angela', 'Martin', '1971-06-25', 'F', 63000, 102, 2);
-INSERT INTO employee VALUES(104, 'Kelly', 'Kapoor', '1980-02-05', 'F', 55000, 102, 2);
-INSERT INTO employee VALUES(105, 'Stanley', 'Hudson', '1958-02-19', 'M', 69000, 102, 2);
+INSERT INTO employee VALUES(103, 'Sophie', 'Barnes', '1988-06-25', 'F', 63000, 102, 2);
+INSERT INTO employee VALUES(104, 'Kelly', 'Cooper', '1982-02-05', 'F', 55000, 102, 2);
+INSERT INTO employee VALUES(105, 'Steve', 'Harrington', '1944-02-19', 'M', 69000, 102, 2);
 
 -- Stamford
-INSERT INTO employee VALUES(106, 'Josh', 'Porter', '1969-09-05', 'M', 78000, 100, NULL);
+INSERT INTO employee VALUES(106, 'Jason', 'Lowry', '1981-09-05', 'M', 78000, 100, NULL);
 
-INSERT INTO branch VALUES(3, 'Stamford', 106, '1998-02-13');
+INSERT INTO branch VALUES(3, 'Los Angeles', 106, '1998-02-13');
 
 UPDATE employee
 SET branch_id = 3
 WHERE emp_id = 106;
 
-INSERT INTO employee VALUES(107, 'Andy', 'Bernard', '1973-07-22', 'M', 65000, 106, 3);
-INSERT INTO employee VALUES(108, 'Jim', 'Halpert', '1978-10-01', 'M', 71000, 106, 3);
+INSERT INTO employee VALUES(107, 'Bobby', 'Newport', '1977-07-12', 'M', 65000, 106, 3);
+INSERT INTO employee VALUES(108, 'Jim', 'Pickerton', '1971-10-01', 'M', 71000, 106, 3);
 
-INSERT INTO branch_supplier VALUES(2, 'Hammer Mill', 'Paper');
+INSERT INTO branch_supplier VALUES(2, 'Hammer Mill', 'Books');
 INSERT INTO branch_supplier VALUES(2, 'Uni-ball', 'Writing Utensils');
 INSERT INTO branch_supplier VALUES(3, 'Patriot Paper', 'Paper');
 INSERT INTO branch_supplier VALUES(2, 'J.T. Forms & Labels', 'Custom Forms');
@@ -97,11 +97,11 @@ INSERT INTO branch_supplier VALUES(3, 'Hammer Mill', 'Paper');
 INSERT INTO branch_supplier VALUES(3, 'Stamford Labels', 'Custom Forms');
 
 
-INSERT INTO client VALUES(400, 'Dunmore Highschool', 2);
-INSERT INTO client VALUES(401, 'Lackawana Country', 2);
+INSERT INTO client VALUES(400, 'Oakville Highschool', 2);
+INSERT INTO client VALUES(401, 'Ozark Country', 2);
 INSERT INTO client VALUES(402, 'FedEx', 3);
-INSERT INTO client VALUES(403, 'John Daly Law, LLC', 3);
-INSERT INTO client VALUES(404, 'Scranton Whitepages', 2);
+INSERT INTO client VALUES(403, 'John Daily Law, LLC', 3);
+INSERT INTO client VALUES(404, 'Hydro Company', 2);
 INSERT INTO client VALUES(405, 'Times Newspaper', 3);
 INSERT INTO client VALUES(406, 'FedEx', 2);
 
@@ -167,7 +167,7 @@ SELECT SUM(salary) AS total_salary
 FROM employee
 
 -- find out how many males and females there are
--- aggration
+-- aggregation
 SELECT COUNT(sex) AS sex_count, sex
 FROM EMPLOYEE
 GROUP BY sex;
@@ -239,7 +239,7 @@ WHERE employee.emp_id IN (
 	WHERE works_with.total_sales > 30000
 );
 
---Find all clients who are handled by the branch that michael scott manages, assume you know michael's ID
+--Find all clients who are handled by the branch that david staples manages, assume you know manager's ID
 
 SELECT client.client_name AS revenue_client
 FROM client
